@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemHabCriavel" height="260">
+  <layout align="top" height="5"/>
+  <rectangle align="top" height="250">
+    <layout align="top" height="35">
+      <label align="left" width="55" text="Nome:"/>
+      <edit align="left" width="300" field="nome" name="edtNome"/>
+      <layout align="left" width="10"/>
+      <button align="left" width="110" text="Remover" name="btnRemover" onClick="NDB.deleteNode(sheet)"/>
+    </layout>
+
+    <layout align="top" height="5"/>
+
+    <layout align="top" height="200">
+	      <image align="left"
+	             width="120"
+	             height="180"
+	             field="imagem"
+	             name="imgHab"
+	             editable="true"
+	             style="autoFit"/>
+
+      <layout align="left" width="10"/>
+
+      <layout align="client">
+        <label align="top" height="20" text="Descrição"/>
+        <textEditor align="client" field="descricao" name="txtDescricao"/>
+      </layout>
+    </layout>
+
+  </rectangle>
+</form>

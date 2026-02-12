@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="br.com.rrpg.PedraRPG_S3" formType="sheetTemplate" title="Pedra RPG" description="Ficha Pedra RPG" name="frmPedraRPG">
+  <script>
+    <![CDATA[
+      require("sheetCode.lua");
+
+      local __oldSetNodeObject = self.setNodeObject;
+      function self:setNodeObject(nodeObject)
+        __oldSetNodeObject(self, nodeObject);
+        if sheet ~= nil then
+        _G.rclPedras = self.rclPedras;
+        _G.rclArmas = self.rclArmas;
+        _G.rclArmaduras = self.rclArmaduras;
+        _G.rclConsumiveis = self.rclConsumiveis;
+        _G.rclTalentos = self.rclTalentos;
+        _G.rclTruques = self.rclTruques;
+        _G.rclMagias1 = self.rclMagias1;
+        _G.rclMagias2 = self.rclMagias2;
+        _G.rclMagias3 = self.rclMagias3;
+        _G.rclMagias4 = self.rclMagias4;
+        _G.rclMagias5 = self.rclMagias5;
+        _G.rectProntoUpar = self.rectProntoUpar;
+          initPedraRPG(self, sheet);
+        end
+      end
+
+    ]]>
+  </script>
+
+  <tabControl align="client">
+
+    <tab title="Geral">
+      <scrollBox align="client">
+
+        <dataLink field="nivel">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+        <dataLink field="DES">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+        <dataLink field="CON">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+        <dataLink field="bonusPV">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+        <dataLink field="pvExtra">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+        <dataLink field="manaPedra">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+        <dataLink field="manaExtra">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+        <dataLink field="armadura">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+        <dataLink field="bonusCA">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+        <dataLink field="caExtra">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+        <dataLink field="xpAtual">
+          <event name="onChange">recalc(sheet);</event>
+        </dataLink>
+
+        <layout align="top" height="10"/>
+
+        <label text="Pedra RPG" align="top" fontSize="20"/>
+
+        <layout align="top" height="40">
+          <label text="Nome" align="left" width="60"/>
+          <edit field="nome" align="left" width="260"/>
+          <label text="Nível" align="left" width="60"/>
+          <edit field="nivel" align="left" width="60" type="number"/>
+          <label text="Nível das Pedras" align="left" width="110"/>
+          <edit field="nivelPedras" align="left" width="60" type="number"/>
+        </layout>
+
+        <rectangle name="rectProntoUpar" align="top" height="34" strokeSize="0" visible="false">
+          <layout align="client"/>
+          <label name="lblProntoUpar" text="PRONTO PARA UPAR" align="client"
+                 horzTextAlign="center" vertTextAlign="center" fontSize="16"/>
+        </rectangle>
+
+        <layout align="top" height="10"/>
+<layout align="top" height="10"/>
+
+        <label text="Atributos (o valor já é o modificador)" align="top" fontSize="16"/>
+
+        <layout align="top" height="28">
+          <label text="" align="left" width="60"/>
+          <label text="MOD" align="left" width="70" horzTextAlign="center"/>
+          <label text="Bônus" align="left" width="70" horzTextAlign="center"/>
+          <label text="Teste" align="left" width="90" horzTextAlign="center"/>
+</layout>
+
+        <layout align="top" height="34">
+          <label text="FOR" align="left" width="60"/>
+          <edit field="FOR" align="left" width="70" type="number" horzTextAlign="center"/>
+          
+          <edit field="bonusFOR" align="left" width="70" type="number" horzTextAlign="center"/>
+          <dataLink field="bonusFOR"><event name="onChange">recalc(sheet);</event></dataLink>
+          <button text="Rolar" align="left" width="90"><event name="onClick">rolarAtributo(sheet, "FOR", "Teste de Força");</event></button>
+</layout>
+
+        <layout align="top" height="34">
+          <label text="DES" align="left" width="60"/>
+          <edit field="DES" align="left" width="70" type="number" horzTextAlign="center"/>
+          
+          <edit field="bonusDES" align="left" width="70" type="number" horzTextAlign="center"/>
+          <dataLink field="bonusDES"><event name="onChange">recalc(sheet);</event></dataLink>
+          <button text="Rolar" align="left" width="90"><event name="onClick">rolarAtributo(sheet, "DES", "Teste de Destreza");</event></button>
+</layout>
+
+        <layout align="top" height="34">
+          <label text="CON" align="left" width="60"/>
+          <edit field="CON" align="left" width="70" type="number" horzTextAlign="center"/>
+          
+          <edit field="bonusCON" align="left" width="70" type="number" horzTextAlign="center"/>
+          <dataLink field="bonusCON"><event name="onChange">recalc(sheet);</event></dataLink>
+          <button text="Rolar" align="left" width="90"><event name="onClick">rolarAtributo(sheet, "CON", "Teste de Constituição");</event></button>
+</layout>
+
+        <layout align="top" height="34">
+          <label text="INT" align="left" width="60"/>
+          <edit field="INT" align="left" width="70" type="number" horzTextAlign="center"/>
+          
+          <edit field="bonusINT" align="left" width="70" type="number" horzTextAlign="center"/>
+          <dataLink field="bonusINT"><event name="onChange">recalc(sheet);</event></dataLink>
+          <button text="Rolar" align="left" width="90"><event name="onClick">rolarAtributo(sheet, "INT", "Teste de Inteligência");</event></button>
+</layout>
+
+        <layout align="top" height="34">
+          <label text="SAB" align="left" width="60"/>
+          <edit field="SAB" align="left" width="70" type="number" horzTextAlign="center"/>
+          
+          <edit field="bonusSAB" align="left" width="70" type="number" horzTextAlign="center"/>
+          <dataLink field="bonusSAB"><event name="onChange">recalc(sheet);</event></dataLink>
+          <button text="Rolar" align="left" width="90"><event name="onClick">rolarAtributo(sheet, "SAB", "Teste de Sabedoria");</event></button>
+</layout>
+
+        <layout align="top" height="34">
+          <label text="CAR" align="left" width="60"/>
+          <edit field="CAR" align="left" width="70" type="number" horzTextAlign="center"/>
+          
+          <edit field="bonusCAR" align="left" width="70" type="number" horzTextAlign="center"/>
+          <dataLink field="bonusCAR"><event name="onChange">recalc(sheet);</event></dataLink>
+          <button text="Rolar" align="left" width="90"><event name="onClick">rolarAtributo(sheet, "CAR", "Teste de Carisma");</event></button>
+</layout>
+
+        <layout align="top" height="10"/>
+
+        <label text="Iniciativa" align="top" fontSize="16"/>
+        <layout align="top" height="34">
+          <label text="INI (auto = DES)" align="left" width="120"/>
+          <edit field="INI" align="left" width="70" type="number" readOnly="true" horzTextAlign="center"/>
+          
+          <dataLink field="bonusINI"><event name="onChange">recalc(sheet);</event></dataLink>
+          <button text="Rolar INI" align="left" width="90"><event name="onClick">rolarIniciativa(sheet);</event></button>
+        </layout>
+
+        <layout align="top" height="10"/>
+
+        <label text="Recursos e Defesas (auto + ajuste)" align="top" fontSize="16"/>
+
+        <layout align="top" height="40">
+          <label text="Bônus PV" align="left" width="70"/>
+          <edit field="bonusPV" align="left" width="70" type="number"/>
+          <label text="PV Extra" align="left" width="70"/>
+          <edit field="pvExtra" align="left" width="70" type="number"/>
+          <label text="PV Total" align="left" width="70"/>
+          <edit field="PV" align="left" width="80" type="number" readOnly="true"/>
+        </layout>
+
+        <layout align="top" height="40">
+          <label text="Mana Pedra" align="left" width="80"/>
+          <edit field="manaPedra" align="left" width="70" type="number"/>
+          <label text="Mana Extra" align="left" width="80"/>
+          <edit field="manaExtra" align="left" width="70" type="number"/>
+          <label text="Mana Total" align="left" width="80"/>
+          <edit field="Mana" align="left" width="80" type="number" readOnly="true"/>
+        </layout>
+
+        <layout align="top" height="40">
+          <label text="Bônus CA" align="left" width="80"/>
+          <edit field="bonusCA" align="left" width="70" type="number"/>
+          <label text="CA Extra" align="left" width="70"/>
+          <edit field="caExtra" align="left" width="70" type="number"/>
+          <label text="CA Itens" align="left" width="70"/>
+          <edit field="caItens" align="left" width="70" type="number" readOnly="true"/>
+          <label text="CA Total" align="left" width="70"/>
+          <edit field="CA" align="left" width="70" type="number" readOnly="true"/>
+        </layout>
+
+        <layout align="top" height="10"/>
+
+        <label text="Progressão (auto)" align="top" fontSize="16"/>
+        <layout align="top" height="40">
+          <label text="XP Atual" align="left" width="70"/>
+          <edit field="xpAtual" align="left" width="90" type="number"/>
+          <label text="XP p/ Upar" align="left" width="80"/>
+          <edit field="xpProxNivel" align="left" width="90" type="number" readOnly="true"/>
+          <label text="Proficiência" align="left" width="90"/>
+          <edit field="bonusProficiencia" align="left" width="70" type="number" readOnly="true"/>
+        </layout>
+
+        <layout align="top" height="16"/>
+      </scrollBox>
+    </tab>
+
+    <tab title="Magias">
+      <scrollBox align="client">
+        <layout align="top" height="10"/>
+
+        <label text="Talentos" align="top"/>
+        <button name="btnAddTalento" text="+ Adicionar Talento" align="top" height="32">
+          <event name="onClick">adicionarTalento(sheet, rclTalentos);</event>
+        </button>
+        <recordList name="rclTalentos" field="talentos" align="top" height="260" itemHeight="260" templateForm="frmItemMagia"/>
+
+        <layout align="top" height="12"/>
+
+        <label text="Truques" align="top"/>
+        <button name="btnAddTruque" text="+ Adicionar Truque" align="top" height="32">
+          <event name="onClick">adicionarTruque(sheet, rclTruques);</event>
+        </button>
+        <recordList name="rclTruques" field="truquesLista" align="top" height="260" itemHeight="260" templateForm="frmItemMagia"/>
+
+        <layout align="top" height="12"/>
+
+        <label text="Magia 1" align="top"/>
+        <button name="btnAddMagia1" text="+ Adicionar Magia 1" align="top" height="32">
+          <event name="onClick">adicionarMagia1(sheet, rclMagias1);</event>
+        </button>
+        <recordList name="rclMagias1" field="magias1Lista" align="top" height="260" itemHeight="260" templateForm="frmItemMagia"/>
+
+        <layout align="top" height="12"/>
+
+        <label text="Magia 2" align="top"/>
+        <button name="btnAddMagia2" text="+ Adicionar Magia 2" align="top" height="32">
+          <event name="onClick">adicionarMagia2(sheet, rclMagias2);</event>
+        </button>
+        <recordList name="rclMagias2" field="magias2Lista" align="top" height="260" itemHeight="260" templateForm="frmItemMagia"/>
+
+        <layout align="top" height="12"/>
+
+        <label text="Magia 3" align="top"/>
+        <button name="btnAddMagia3" text="+ Adicionar Magia 3" align="top" height="32">
+          <event name="onClick">adicionarMagia3(sheet, rclMagias3);</event>
+        </button>
+        <recordList name="rclMagias3" field="magias3Lista" align="top" height="260" itemHeight="260" templateForm="frmItemMagia"/>
+
+        <layout align="top" height="12"/>
+
+        <label text="Magia 4" align="top"/>
+        <button name="btnAddMagia4" text="+ Adicionar Magia 4" align="top" height="32">
+          <event name="onClick">adicionarMagia4(sheet, rclMagias4);</event>
+        </button>
+        <recordList name="rclMagias4" field="magias4Lista" align="top" height="260" itemHeight="260" templateForm="frmItemMagia"/>
+
+        <layout align="top" height="12"/>
+
+        <label text="Magia 5" align="top"/>
+        <button name="btnAddMagia5" text="+ Adicionar Magia 5" align="top" height="32">
+          <event name="onClick">adicionarMagia5(sheet, rclMagias5);</event>
+        </button>
+        <recordList name="rclMagias5" field="magias5Lista" align="top" height="260" itemHeight="260" templateForm="frmItemMagia"/>
+
+        <layout align="top" height="16"/>
+      </scrollBox>
+    </tab>
+
+    <tab title="Pedras">
+      <scrollBox align="client">
+        <layout align="top" height="10"/>
+        <button name="btnAddPedra" text="+ Adicionar Pedra" align="top" height="34" width="180" left="10">
+          <event name="onClick">adicionarPedra(sheet, rclPedras);</event>
+        </button>
+        <layout align="top" height="10"/>
+        <recordList name="rclPedras" field="pedras" align="top" height="1600" templateForm="frmPedraItem" itemHeight="360"/>
+        <layout align="top" height="16"/>
+      </scrollBox>
+    </tab>
+
+    <tab title="Itens">
+      <scrollBox align="client">
+
+        <layout align="top" height="10"/>
+
+        <label text="Armas" align="top"/>
+        <button name="btnAddArma" text="+ Adicionar Arma" align="top" height="32">
+          <event name="onClick">adicionarArma(sheet, rclArmas);</event>
+        </button>
+        <recordList name="rclArmas" field="armas" align="top" height="420" itemHeight="360" templateForm="frmItemArma"/>
+
+        <layout align="top" height="12"/>
+
+        <label text="Armaduras" align="top"/>
+        <button name="btnAddArmadura" text="+ Adicionar Armadura" align="top" height="32">
+          <event name="onClick">adicionarArmadura(sheet, rclArmaduras);</event>
+        </button>
+        <recordList name="rclArmaduras" field="armadurasLista" align="top" height="340" itemHeight="300" templateForm="frmItemArmadura"/>
+
+        <layout align="top" height="12"/>
+
+        <label text="Consumíveis" align="top"/>
+        <button name="btnAddConsumivel" text="+ Adicionar Consumível" align="top" height="32">
+          <event name="onClick">adicionarConsumivel(sheet, rclConsumiveis);</event>
+        </button>
+        <recordList name="rclConsumiveis" field="consumiveis" align="top" height="340" itemHeight="300" templateForm="frmItemConsumivel"/>
+
+        <layout align="top" height="12"/>
+
+        <label text="Utilizáveis com Dano" align="top"/>
+        <button name="btnAddUtilDano" text="+ Adicionar Utilizável (Dano)" align="top" height="32">
+          <event name="onClick">adicionarUtilizavelDano(sheet, self.rclUtilizaveisDano);</event>
+        </button>
+        <recordList name="rclUtilizaveisDano" field="utilizaveisDano" align="top" height="380" itemHeight="340" templateForm="frmItemUtilizavelDano"/>
+
+        <layout align="top" height="12"/>
+
+        <label text="Mochila" align="top"/>
+        <button name="btnAddMochila" text="+ Adicionar Item (Mochila)" align="top" height="32">
+          <event name="onClick">adicionarItemMochila(sheet, self.rclMochila);</event>
+        </button>
+        <recordList name="rclMochila" field="mochila" align="top" height="340" itemHeight="200" templateForm="frmItemMochila"/>
+
+        <layout align="top" height="16"/>
+      </scrollBox>
+    </tab>
+
+    
+    <tab title="Habs Criavel">
+      <scrollBox align="client">
+        <layout align="top" height="5"/>
+        <rectangle align="top" height="35">
+          <button align="client" name="btnAddHabCriavel" text="+ Adcionar Hab Criavel">
+                  <event name="onClick">
+                    adicionarHabCriavel(sheet, self.rclHabsCriavel);
+                  </event>
+                </button>
+        </rectangle>
+        <layout align="top" height="5"/>
+        <recordList align="client" name="rclHabsCriavel" field="habsCriaveis" templateForm="frmItemHabCriavel"/>
+      </scrollBox>
+    </tab>
+
+<tab title="Anotações">
+      <scrollBox align="client">
+        <layout align="top" height="10"/>
+        <label text="Anotações" align="top" fontSize="16"/>
+        <textEditor field="anotacoes" align="top" height="600"/>
+      </scrollBox>
+    </tab>
+
+  </tabControl>
+</form>

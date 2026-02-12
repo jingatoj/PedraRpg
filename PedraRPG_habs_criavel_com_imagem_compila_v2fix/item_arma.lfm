@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemArma" height="360">
+  <script>
+    <![CDATA[
+      require("sheetCode.lua");
+      require("ndb.lua");
+    ]]>
+  </script>
+
+  <rectangle align="client" strokeColor="#404040" strokeSize="1"/>
+  <dataLink field="caBonus">
+    <event name="onChange">local r=getRootSheet(sheet); if r~=nil then recalc(r); end</event>
+  </dataLink>
+
+  <layout align="top" height="6"/>
+
+  <layout align="top" height="34">
+    <label text="Arma:" align="left" width="50"/>
+    <edit field="nome" align="left" width="320"/>
+    <layout align="client"/>
+    <button text="Remover" align="right" width="90">
+      <event name="onClick">local r=getRootSheet(sheet); ndb.deleteNode(sheet); if r~=nil then recalc(r); end</event>
+    </button>
+  </layout>
+
+  <layout align="top" height="8"/>
+
+  <layout align="top" height="34">
+    <label text="Dano:" align="left" width="50"/>
+    <edit field="dano" align="left" width="140"/>
+    <label text="Extra:" align="left" width="50"/>
+    <edit field="danoExtra" align="left" width="160"/>
+    <button text="Rolar" align="left" width="80">
+      <event name="onClick">rolarDanoArma(sheet);</event>
+    </button>
+    <layout align="client"/>
+    <label text="CA:" align="right" width="30"/>
+    <edit field="caBonus" align="right" width="60" type="number"/>
+  </layout>
+
+  <layout align="top" height="10"/>
+
+  <layout align="top" height="240">
+    <image field="imgItem" editable="true" style="autoFit" align="left" width="230" height="230"/>
+    <layout align="left" width="10"/>
+    <textEditor field="descricao" align="client"/>
+  </layout>
+
+  <layout align="top" height="10"/>
+</form>
