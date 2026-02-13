@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemHabCriavel" height="260">
+<script>
+    <![CDATA[
+      require("sheetCode.lua");
+    ]]>
+  </script>
+
+  <layout align="top" height="5"/>
+  <rectangle align="top" height="220">
+    <layout align="top" height="30">
+      <label align="left" width="55" text="Nome:"/>
+      <edit align="left" width="320" field="nome" name="edtNome"/>
+      <layout align="left" width="10"/>
+      <button align="left" width="110" text="Remover" name="btnRemover" onClick="NDB.deleteNode(sheet)"/>
+    </layout>
+    <layout align="top" height="5"/>
+    <label align="top" height="20" text="Descrição"/>
+    <textEditor align="client" field="descricao" name="txtDescricao"/>
+  </rectangle>
+  <layout align="top" height="10"/>
+</form>

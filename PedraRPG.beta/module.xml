@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" sdkApiVersion="88" sdkMinorApiVersion="2">
+    <id>br.com.filipe.pedrarpg</id>
+    <version>0.1.0</version>
+
+    <settings>
+        <automaticStringLocalization>true</automaticStringLocalization>
+    </settings>
+
+    <info lang="pt-BR">
+        <name>Pedra RPG</name>
+        <description>Modelo de ficha Pedra RPG</description>
+        <author>Filipe</author>
+        <site>https://firecast.app/</site>
+        <contact>https://firecast.app/</contact>
+    </info>
+
+    <info lang="en">
+        <name>Pedra RPG</name>
+        <description>Pedra RPG character sheet</description>
+    </info>
+
+    
+
+    
+
+    
+    
+    
+</module>
